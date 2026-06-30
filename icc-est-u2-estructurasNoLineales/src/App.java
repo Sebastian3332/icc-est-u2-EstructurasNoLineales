@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Set;
 import collections.set.Sets;
+import collections.set.maps.Maps;
 import models.Contacto;
 import models.Person;
 import structures.node.Node;
@@ -18,6 +19,7 @@ public class App {
         // runIntTree();
         // runPersonTree();
         runSets();
+        runMaps();
         
     }
 
@@ -148,6 +150,10 @@ private static void runIntTree() {
         System.out.println("\n--- ÁRBOL DE PERSONAS IN-ORDER ---");
         personTree.inOrder();
     }
-
-    
-}
+    private static void runMaps(){
+        Maps maps = new Maps();
+        maps.construirHashMap();
+        maps.coLinkedHashMap();
+        maps.eliminarDuplicadosandSort(null);
+        }
+    }
