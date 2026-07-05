@@ -30,3 +30,9 @@ Descripcion: Se creo la clase de BinaryTree y Person. Se creo un arbol que guard
 Fecha: 23/06/26
 
 Descripcion: Realizamos 4 ejercicios sobre arboles y documentamos todo el avance en un informe.
+
+![alt text](image-9.png)
+
+Fecha: 01/06/26
+
+Descripcion: Creamos un folder de grafos con su respectiva clase realizamos algunos ejemplos instanciandolos en el App.

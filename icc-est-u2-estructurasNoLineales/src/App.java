@@ -4,6 +4,7 @@ import collections.set.Sets;
 import collections.set.maps.Maps;
 import models.Contacto;
 import models.Person;
+import structures.graphs.Graph;
 import structures.node.Node;
 import trees.BinaryTree;
 import trees.Ejercicio1;
@@ -18,8 +19,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         // runIntTree();
         // runPersonTree();
-        runSets();
-        runMaps();
+        // runSets();
+        // runMaps();
+        runGraph();
         
     }
 
@@ -113,8 +115,7 @@ private static void runIntTree() {
 
     Ejercicio3 ejercicio3 = new Ejercicio3();
 
-    List<List<Node<Integer>>> niveles =
-            ejercicio3.listLevels(root);
+    List<List<Node<Integer>>> niveles = ejercicio3.listLevels(root);
 
     for (List<Node<Integer>> nivel : niveles) {
 
@@ -139,21 +140,39 @@ private static void runIntTree() {
             "Profundidad: " +  ejercicio4.maxDepth(root));
 }
 
-    private static void runPersonTree() {
+private static void runPersonTree() {
 
-        BinaryTree<Person> personTree = new BinaryTree<>();
+    BinaryTree<Person> personTree = new BinaryTree<>();
+    personTree.insert(new Person("Juan", 30));
+    personTree.insert(new Person("Ana", 20));
+    personTree.insert(new Person("Pedro", 40));
 
-        personTree.insert(new Person("Juan", 30));
-        personTree.insert(new Person("Ana", 20));
-        personTree.insert(new Person("Pedro", 40));
-
-        System.out.println("\n--- ÁRBOL DE PERSONAS IN-ORDER ---");
-        personTree.inOrder();
-    }
+    System.out.println("\n--- ÁRBOL DE PERSONAS IN-ORDER ---");
+    personTree.inOrder();
+}
     private static void runMaps(){
         Maps maps = new Maps();
         maps.construirHashMap();
         maps.coLinkedHashMap();
         maps.eliminarDuplicadosandSort(null);
-        }
     }
+
+private static void runGraph() {
+
+    Graph<String> graph = new Graph<>();
+
+    graph.addEdgeUni("A", "B");
+    graph.addEdgeUni("B", "C");
+    graph.addEdgeUni("B", "D");
+    graph.addEdgeUni("C", "A");
+    graph.addEdgeUni("C", "D");
+    graph.addEdgeUni("D", "C");
+    graph.addEdgeUni("D", "J");
+    graph.addEdgeUni("J", "D");
+
+    System.out.println("LISTA DE ADYACENCIA");
+    graph.printGraph();
+}
+
+
+}
