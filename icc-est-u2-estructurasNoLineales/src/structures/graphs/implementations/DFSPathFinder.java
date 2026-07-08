@@ -1,0 +1,59 @@
+package structures.graphs.implementations;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import structures.graphs.Graph;
+import structures.graphs.PathFinder;
+import structures.graphs.PathResult;
+import structures.node.Node;
+
+public class DFSPathFinder<T> implements PathFinder<T> {
+
+    @Override
+    public PathResult<T> find(Graph<T> graph, T start, T end) {
+
+        Set<T> visited = new LinkedHashSet<>();
+        Set<T> path = new LinkedHashSet<>();
+
+        boolean encontrado = dfs(graph, start, end, visited, path);
+
+        if (!encontrado) {
+            path.clear();
+            System.out.println("No se encontró un camino entre " + start + " y " + end + ".");
+        }
+
+        return new PathResult<>(visited, path);
+    }
+
+    private boolean dfs(Graph<T> graph,
+            T current,
+            T end,
+            Set<T> visited,
+            Set<T> path) {
+
+        visited.add(current);
+        path.add(current);
+
+        // Caso base
+        if (current.equals(end)) {
+            return true;
+        }
+
+        // Recorrer vecinos
+        for (Node<T> vecino : graph.getVecinos(current)) {
+
+            if (!visited.contains(vecino.getValue())) {
+
+                if (dfs(graph, vecino.getValue(), end, visited, path)) {
+                    return true;
+                }
+            }
+        }
+
+        // Retroceder
+        path.remove(current);
+
+        return false;
+    }
+}

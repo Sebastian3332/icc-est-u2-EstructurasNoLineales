@@ -7,20 +7,20 @@ import java.util.Set;
 
 import structures.node.Node;
 
-public class Graph <T>{
+public class Graph<T> {
 
     private Map<Node<T>, Set<Node<T>>> graph;
-    
+
     public Graph() {
         this.graph = new HashMap<Node<T>, Set<Node<T>>>();
     }
 
-    public void addNode(T data){
+    public void addNode(T data) {
         Node<T> newnode = new Node<T>(data);
         graph.putIfAbsent(newnode, new HashSet<Node<T>>());
     }
 
-    public void add(Node<T> node){
+    public void add(Node<T> node) {
         graph.putIfAbsent(node, new HashSet<Node<T>>());
     }
 
@@ -46,12 +46,18 @@ public class Graph <T>{
     }
 
     public void printGraph() {
-        for(Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()) {
+        for (Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()) {
             System.out.print(entry.getKey() + " -> ");
-            for(Node<T> coneccion : entry.getValue()) {
+            for (Node<T> coneccion : entry.getValue()) {
                 System.out.print(coneccion + " ");
             }
             System.out.println();
         }
     }
+
+    public Set<Node<T>> getVecinos(T current) {
+        Node<T> node = new Node<T>(current);
+        return graph.getOrDefault(node, new HashSet<Node<T>>());
+    }
+
 }
