@@ -11,7 +11,7 @@ import structures.node.Node;
 public class DFSPathFinder<T> implements PathFinder<T> {
 
     @Override
-    public PathResult<T> find(Graph<T> graph, T start, T end) {
+    public PathResult<T> findPath(Graph<T> graph, T start, T end) {
 
         Set<T> visited = new LinkedHashSet<>();
         Set<T> path = new LinkedHashSet<>();
@@ -20,13 +20,13 @@ public class DFSPathFinder<T> implements PathFinder<T> {
 
         if (!encontrado) {
             path.clear();
-            System.out.println("No se encontró un camino entre " + start + " y " + end + ".");
         }
 
         return new PathResult<>(visited, path);
     }
 
-    private boolean dfs(Graph<T> graph,
+    private boolean dfs(
+            Graph<T> graph,
             T current,
             T end,
             Set<T> visited,
